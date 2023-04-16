@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import About from "./Components/About/About";
+import MyCard from "./Components/MyCard/MyCard";
 
 function App() {
   const [user, setUser] = useState()
@@ -14,11 +14,7 @@ function App() {
   }, [])
   return (
     <>
-      {user?.map(item => {
-        return (
-          <About name={item?.name}/>
-        )
-      })}
+      <MyCard />
     </>
   );
 }

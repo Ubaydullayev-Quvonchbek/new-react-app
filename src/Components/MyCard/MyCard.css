@@ -1,0 +1,20 @@
+body {
+    background-color: #e5e5e5;
+}
+
+img{
+    height: 370px;
+    width: 100%;
+}
+
+.count-text-poragraf {
+    font-weight: 600;
+    display: inline-block;
+    color: #000 !important;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.ml--{
+    margin-left: 30px !important;
+}
