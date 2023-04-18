@@ -1,20 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import "./MyCard.css";
 import { Button, Card, Col, Container, ListGroup, Row } from 'react-bootstrap';
 import MyCardData from "./MyCard-data.js";
-
 const MyCard = () => {
-    const [Price, setPrice] = useState(0);
-    const [Count, setCount] = useState(0);
-    const purchase = (item, event) => {
+    let [Price, setPrice] = useState(0);
+    const purchase = (item) => {
         setPrice(Price + item);
-        event.currentTarget.disabled = true;
-        alert('salom')
     }
+    const plus = (item) => {
+        setPrice(Price + item);
+    }
+    const minus = (item) => {
+        Price <= 0 ? Price = 0 : setPrice(Price - item);
+    }
+    const setShow = () => {
+        alert('Purchase Completed');
+    }
+    let TotalPrice = Price <= 0 ? 0 : Price
     return (
         <>
             <Container>
-                <Row className='justify-content-evenly mt-4'>
+                <Row className='justify-content-evenly mt-3'>
+                    <Col lg={12} className='mb-3'>
+                        <ListGroup>
+                            <ListGroup.Item>
+                                <div className="d-flex align-items-center">
+                                    <h5 className='m-0 mRight'>Total price: {TotalPrice}</h5>
+                                    <Button className='d-inline-block' variant="success" onClick={() => setShow()}>Buy</Button>
+                                </div>
+                            </ListGroup.Item>
+                        </ListGroup>
+                    </Col>
                     {MyCardData?.map(item => {
                         return (
                             <Col lg={3}>
@@ -23,14 +39,13 @@ const MyCard = () => {
                                     <Card.Body>
                                         <Card.Title>{item?.productName}</Card.Title>
                                         <Card.Text>{item?.description}</Card.Text>
-                                        <div className="d-flex align-items-center">
+                                        <div className="d-flex align-items-center justify-content-between">
                                             <div>
-                                                <Button onClick={(e) => purchase(item?.price, e)} variant={'primary'}>{item?.price}</Button>
+                                                <Button className='btn-success' onClick={(e) => purchase(item?.price)} variant={'primary'}>{item?.price}</Button>
                                             </div>
-                                            <div>
-                                                <Button className='btn btn-success m-1 ml--' onClick={() => setCount(Count + 1)}><i className="fa-solid fa-arrow-up"></i></Button>
-                                                <p className='count-text-poragraf'>{Count + 1}</p>
-                                                <Button className='btn btn-success m-1' onClick={() => setCount(Count < 1 ? 0 : Count - 1)}><i className="fa-solid fa-arrow-down"></i></Button>
+                                            <div className='d-inline-block'>
+                                                <Button className='btn btn-success m-1 ml--' onClick={() => plus(item?.price)}>+</Button>
+                                                <Button className='btn btn-success m-1' onClick={() => minus(item?.price)}>-</Button>
                                             </div>
                                         </div>
                                     </Card.Body>
@@ -38,15 +53,9 @@ const MyCard = () => {
                             </Col>
                         )
                     })}
-                    <Col lg={12} className='mt-4'>
-                        <ListGroup>
-                            <ListGroup.Item>Total price: {Count == 0 ? Price : Price * (Count + 1)}</ListGroup.Item>
-                        </ListGroup>
-                    </Col>
                 </Row>
             </Container>
         </>
     );
 }
-
 export default MyCard;

@@ -2,7 +2,7 @@ body {
     background-color: #e5e5e5;
 }
 
-img{
+img {
     height: 370px;
     width: 100%;
 }
@@ -15,6 +15,45 @@ img{
     margin-right: 10px;
 }
 
-.ml--{
+.ml-- {
     margin-left: 30px !important;
+}
+
+.btn-success {
+    padding: 3px !important;
+    width: 50px;
+    height: 50px;
+    margin: .25rem !important;
+}
+
+.buy-all {
+    border-radius: 50em;
+    width: 100px;
+    background-color: rgba(25, 135, 84, 0.85);
+    padding: 5px 20px;
+    color: white;
+    border-radius: 3;
+    margin-left: 30px;
+}
+
+.purchased {
+    position: fixed;
+    width: 400px;
+    left: 0;
+    top: 0;
+    background-color: rgba(25, 135, 84, 0.85);
+    padding: 2px 10px;
+    color: white;
+    border-radius: 3;
+    margin-left: 30px !important;
+}
+
+.list-group-item {
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.mRight{
+    margin-right: 30px !important;
 }

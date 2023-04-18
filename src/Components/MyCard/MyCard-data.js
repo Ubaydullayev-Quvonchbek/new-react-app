@@ -23,7 +23,7 @@ const MyCardData = [
     {
         id: 3,
         img: img3,
-        productName: 'Fanta',
+        productName: 'Fanta',   
         description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.',
         price: 3000,
         db: false
